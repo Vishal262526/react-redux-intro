@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createCustomer } from "./customerSlice";
+import { createCustomer, updateName } from "./customerSlice";
 
 const CreateCusotomer = () => {
   const [fullName, setFullName] = useState("");
   const [nationalId, setNationalId] = useState("");
 
-  const customerFullName = useSelector((store) => store.customer.fullName);
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleCreateCustomer = () => {
     if (!fullName || !nationalId) return;
 
     dispatch(createCustomer(fullName, nationalId));
@@ -42,7 +41,7 @@ const CreateCusotomer = () => {
           />
         </div>
         <div className="text-center">
-          <button onClick={handleClick} className="btn btn-dark">
+          <button onClick={handleCreateCustomer} className="btn btn-dark">
             Create
           </button>
         </div>
